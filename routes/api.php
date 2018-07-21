@@ -19,6 +19,8 @@ Route::middleware('auth:api')->group(function () {
     });
     Route::resource('groups','GroupController');
     Route::resource('tasks','TaskController');
+    Route::get('getTasksbyGroupId/{groupId}', 'GroupController@getTasksByGroupId');
+	Route::get('changeTaskController/{taskId}', 'TaskController@changeTaskStatus');
    
 });
 

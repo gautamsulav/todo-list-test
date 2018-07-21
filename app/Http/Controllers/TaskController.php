@@ -16,6 +16,9 @@ class TaskController extends Controller
     public function index()
     {
         $tasks=\App\Task::all();
+        if (Request::is('api*')) {
+           return response()->json($$tasks, 200);
+        }
         return view('task/index',compact('tasks'));
     }
 
@@ -124,5 +127,21 @@ class TaskController extends Controller
         $tasks=\App\Task::all();
         return view('task.tasklist',compact('tasks'))->render();
        
+    }
+
+    public function changeTaskStatus($taskId)
+    {
+
+        $task = \App\Task::find($id);
+        if($task->complete==false)
+        {
+            $task->complete=true;
+        }
+        else
+        {
+            $task->complete=false;
+        }
+        $task->save();;
+        return 'Status Changed'
     }
 }

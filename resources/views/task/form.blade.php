@@ -40,7 +40,8 @@
       e.preventDefault();
         var name = $('#name').val();
         var group = $('#group_id').val();
-        var status='completed'; 
+        var status= document.getElementsByName('status')[0].value; 
+    
         var url=$('#submit-new-task').attr('action');
         
         $.ajax({
